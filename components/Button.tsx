@@ -5,13 +5,8 @@ interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>{}//extend regular HTML attributes of a button
 
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({//we can pass regular html attributes of a button to our components
-  className,
-  children,
-  disabled,
-  type="button",
-  ...props
-}, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((//we can pass regular html attributes of a button to our components
+  {className, children, disabled, type="button", ...props}, ref) => {
   return(
     <button
     type={type}

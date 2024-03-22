@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
-export default function Home() {
+import getSongs from "@/actions/getSongsByUserId";
+import PageContent from "./components/PageContent";
+
+export const revalidate = 0//this page will never be cached and the data on it will always be up-to-date 
+export default async function Home() {
+  
+  const songs = await getSongs()
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto" >
       <Header>
@@ -22,7 +28,7 @@ export default function Home() {
           </h1>
         </div>
         <div>
-          List of Songs
+          <PageContent songs={songs}/>
         </div>
 
       </div>

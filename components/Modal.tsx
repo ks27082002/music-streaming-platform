@@ -20,7 +20,7 @@ const Modal : React.FC<ModalProps> = ({
     <Dialog.Root
     open={isOpen}
     defaultOpen={isOpen}
-    onOpenChange={onChange}
+    onOpenChange={onChange}//Dialog.Root passes open:boolean to onChange depending on status of modal
     >
       <Dialog.Portal>
         <Dialog.Overlay
