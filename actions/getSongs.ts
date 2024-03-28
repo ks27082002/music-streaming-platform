@@ -1,4 +1,3 @@
-
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
@@ -17,6 +16,8 @@ const getSongs = async (): Promise<Song[]> => {
   if (error) {
     console.log(error.message);
   }
+
+  // console.log(data)
 
   return (data as any) || [];
 };

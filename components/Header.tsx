@@ -11,6 +11,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react"
 import { useUser } from "@/hooks/useUser"
 import { FaUserAlt } from "react-icons/fa"
 import {toast} from "react-hot-toast"
+import usePlayer from "@/hooks/usePlayer"
 
 interface HeaderProps{
   children: React.ReactNode
@@ -20,7 +21,7 @@ interface HeaderProps{
 const Header: React.FC<HeaderProps> = ({
   children, className
 }) => {
-
+  const player = usePlayer()
   const router = useRouter()
   const authModal = useAuthModal()
 
@@ -30,6 +31,7 @@ const Header: React.FC<HeaderProps> = ({
   const handleLogout = async () => {
    const {error} = await supabaseClient.auth.signOut()
    //reset any playing songs
+   player.reset()
    router.refresh()
 
    if (error){
@@ -59,10 +61,10 @@ const Header: React.FC<HeaderProps> = ({
 
         {/* Only Mobile */}
         <div className="flex md:hidden gap-x-2 items-center">
-          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"onClick={() => router.push('/')} >
             <HiHome className="text-black" size={20}/>
           </button>
-          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition " onClick={() => router.push('/search')}>
             <BiSearch className="text-black" size={20}/>
           </button>
         </div>

@@ -36,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({children, songs}) => {
       href: '/search'
     }
 
-  ], [])
+  ], [pathname])
   return (
     <div className={twMerge('flex h-full', player.activeId && "h-[calc(100%-80px)]")}>{/*move above by 80 px*/}
       <div className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2">
