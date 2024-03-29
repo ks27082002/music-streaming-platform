@@ -9,7 +9,9 @@ import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2"
 import Slider from "./Slider"
 import usePlayer from "@/hooks/usePlayer"
 import { useEffect, useState } from "react"
-import useSound from 'use-sound'
+const usesound = require('use-sound');
+
+// import useSound from 'use-sound'
 
 interface PlayerContentProps{
   song:Song//deals with current song only
@@ -48,7 +50,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
     player.setId(previousSong)//update player activeId
   }
 
-  const [play, {pause, sound}] = useSound(
+  const [play, {pause, sound}] = usesound.useSound(
     songUrl,//cannotchange dynamically//Url of song to be played
     {
       volume: volume,//volume to play song
