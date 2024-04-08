@@ -51,13 +51,13 @@ const Sidebar: React.FC<SidebarProps> = ({children, songs}) => {
           </div>
         </Box>
 
-        <Box className="overflow-y-auto h-full">
+        <Box className="overflow-y-auto h-full no-scrollbar">
           <Library songs={songs}>    
           </Library>
         </Box>
 
       </div>
-      <main className="h-full flex-1 overflow-y-auto py-2">
+      <main className="h-full flex-1 overflow-y-auto py-2 no-scrollbar">
         {children}
       </main>
     </div>
